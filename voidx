@@ -109,5 +109,5 @@ if syn then
 elseif setclipboard then
     setclipboard(clipboardText)
 end
-
+wait(7.5)
 j:Kick("Script outdated discord link copied to clipboard")
