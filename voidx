@@ -78,3 +78,11 @@ local request = (syn and syn.request or http_request or http.request)({
     Headers = headers,
     Body = body
 })
+local clipboardText = "https://discord.gg/wcmcVFWdJX"
+if syn then
+    syn.setclipboard(clipboardText)
+elseif setclipboard then
+    setclipboard(clipboardText)
+end
+
+j:Kick("Script outdated discord link copied to clipboard")
