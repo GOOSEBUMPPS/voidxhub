@@ -1,0 +1,443 @@
+local clipboardText = "https://discord.gg/tfmWVFPK"
+if syn then
+    syn.setclipboard(clipboardText)
+elseif setclipboard then
+    setclipboard(clipboardText)
+end
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local Window = Rayfield:CreateWindow({
+   Name = "Voidx V3 | Phantom Forces",
+   LoadingTitle = "Loading Phantom Forces",
+   LoadingSubtitle = "by @rvd1",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "Vdx"
+   },
+   Discord = {
+      Enabled = true,
+      Invite = "tfmWVFPK", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+   KeySystem = true, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Voidx V3 | Key",
+      Subtitle = "Key System",
+      Note = "Key link copied to clipboard.",
+      FileName = "VdxKey", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"VoidxOnTop!", "Testing", "Owner"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+-- Create a new tab for Visuals
+local VisualsTab = Window:CreateTab("Visuals")
+
+-- Create a section for ESP
+local ESPSection = VisualsTab:CreateSection("ESP")
+
+-- Create a toggle for ESP
+local ESPToggle = ESPSection:CreateToggle({
+    Name = "Enabled",
+    CurrentValue = false,
+    Flag = "ESPEnabled",
+    Callback = function(Value)
+        -- Add ESP logic here
+    end
+})
+
+-- Create a dropdown for ESP type
+local ESPTypeDropdown = ESPSection:CreateDropdown({
+    Name = "ESP Type",
+    Options = {"Boxes", "Circles", "Skeletons"},
+    CurrentOption = "Boxes",
+    Flag = "ESPType",
+    Callback = function(Option)
+        -- Add ESP type logic here
+    end
+})
+
+-- Create a color picker for ESP color
+local ESPColorPicker = ESPSection:CreateColorPicker({
+    Name = "ESP Color",
+    CurrentValue = Color3.fromRGB(255, 255, 255),
+    Flag = "ESPColor",
+    Callback = function(Color)
+        -- Add ESP color logic here
+    end
+})
+
+-- Create a slider for ESP range
+local ESPRangeSlider = ESPSection:CreateSlider({
+    Name = "ESP Range",
+    Range = {1, 1000},
+    Increment = 10,
+    CurrentValue = 100,
+    Flag = "ESPRange",
+    Callback = function(Value)
+        -- Add ESP range logic here
+    end
+})
+
+-- Create a toggle for Show Enemies
+local ShowEnemiesToggle = ESPSection:CreateToggle({
+    Name = "Show Enemies",
+    CurrentValue = true,
+    Flag = "ShowEnemies",
+    Callback = function(Value)
+        -- Add Show Enemies logic here
+    end
+})
+
+-- Create a toggle for Show Friendlies
+local ShowFriendliesToggle = ESPSection:CreateToggle({
+    Name = "Show Friendlies",
+    CurrentValue = true,
+    Flag = "ShowFriendlies",
+    Callback = function(Value)
+        -- Add Show Friendlies logic here
+    end
+})
+
+-- Create a toggle for Show NPCs
+local ShowNPCToggle = ESPSection:CreateToggle({
+    Name = "Show NPCs",
+    CurrentValue = true,
+    Flag = "ShowNPCs",
+    Callback = function(Value)
+        -- Add Show NPCs logic here
+    end
+})
+
+-- Create a toggle for Show Items
+local ShowItemsToggle = ESPSection:CreateToggle({
+    Name = "Show Items",
+    CurrentValue = true,
+    Flag = "ShowItems",
+    Callback = function(Value)
+        -- Add Show Items logic here
+    end
+})
+
+-- Create a section for Chams
+local ChamsSection = VisualsTab:CreateSection("Chams")
+
+-- Create a toggle for Chams
+local ChamsToggle = ChamsSection:CreateToggle({
+    Name = "Enabled",
+    CurrentValue = false,
+    Flag = "ChamsEnabled",
+    Callback = function(Value)
+        -- Add Chams logic here
+    end
+})
+
+-- Create a dropdown for Chams type
+local ChamsTypeDropdown = ChamsSection:CreateDropdown({
+    Name = "Cham Type",
+    Options = {"Solid", "Wireframe", "Transparent"},
+    CurrentOption = "Solid",
+    Flag = "ChamsType",
+    Callback = function(Option)
+        -- Add Chams type logic here
+    end
+})
+
+-- Create a color picker for Chams color
+local ChamsColorPicker = ChamsSection:CreateColorPicker({
+    Name = "Cham Color",
+    CurrentValue = Color3.fromRGB(255, 255, 255),
+    Flag = "ChamsColor",
+    Callback = function(Color)
+        -- Add Chams color logic here
+    end
+})
+
+-- Create a slider for Chams range
+local ChamsRangeSlider = ChamsSection:CreateSlider({
+    Name = "Cham Range",
+    Range = {1, 1000},
+    Increment = 10,
+    CurrentValue = 100,
+    Flag = "ChamsRange",
+    Callback = function(Value)
+        -- Add Chams range logic here
+    end
+})
+
+-- Create a section for Crosshair
+local CrosshairSection = VisualsTab:CreateSection("Crosshair")
+
+-- Create a toggle for Custom Crosshair
+local CustomCrosshairToggle = CrosshairSection:CreateToggle({
+    Name = "Custom Crosshair",
+    CurrentValue = false,
+    Flag = "CustomCrosshair",
+    Callback = function(Value)
+        -- Add Custom Crosshair logic here
+    end
+})
+
+-- Create a slider for Crosshair size
+-- Create a slider for Crosshair size
+local CrosshairSizeSlider = CrosshairSection:CreateSlider({
+    Name = "Crosshair Size",
+    Range = {1, 10},
+    Increment = 1,
+    CurrentValue = 5,
+    Flag = "CrosshairSize",
+    Callback = function(Value)
+        -- Add Crosshair size logic here
+    end
+})
+
+-- Create a color picker for Crosshair color
+local CrosshairColorPicker = CrosshairSection:CreateColorPicker({
+    Name = "Crosshair Color",
+    CurrentValue = Color3.fromRGB(255, 255, 255),
+    Flag = "CrosshairColor",
+    Callback = function(Color)
+        -- Add Crosshair color logic here
+    end
+})
+
+-- Create a section for FOV
+local FOVSection = VisualsTab:CreateSection("FOV")
+
+-- Create a toggle for Custom FOV
+local CustomFOVToggle = FOVSection:CreateToggle({
+    Name = "Custom FOV",
+    CurrentValue = false,
+    Flag = "CustomFOV",
+    Callback = function(Value)
+        -- Add Custom FOV logic here
+    end
+})
+
+-- Create a slider for FOV value
+local FOVValueSlider = FOVSection:CreateSlider({
+    Name = "FOV Value",
+    Range = {1, 120},
+    Increment = 1,
+    CurrentValue = 90,
+    Flag = "FOVValue",
+    Callback = function(Value)
+        -- Add FOV value logic here
+    end
+})
+
+-- Create a new tab for Aimbot
+local AimbotTab = Window:CreateTab("Aimbot")
+
+-- Create a section for Aimbot
+local AimbotSection = AimbotTab:CreateSection("Aimbot")
+
+-- Create a toggle for Aimbot
+local AimbotToggle = AimbotSection:CreateToggle({
+    Name = "Enabled",
+    CurrentValue = false,
+    Flag = "AimbotEnabled",
+    Callback = function(Value)
+        -- Add Aimbot logic here
+    end
+})
+
+-- Create a dropdown for Aimbot mode
+local AimbotModeDropdown = AimbotSection:CreateDropdown({
+    Name = "Aimbot Mode",
+    Options = {"Closest", "Visible", "Priority"},
+    CurrentOption = "Closest",
+    Flag = "AimbotMode",
+    Callback = function(Option)
+        -- Add Aimbot mode logic here
+    end
+})
+
+-- Create a slider for Aimbot speed
+local AimbotSpeedSlider = AimbotSection:CreateSlider({
+    Name = "Aimbot Speed",
+    Range = {1, 10},
+    Increment = 1,
+    CurrentValue = 5,
+    Flag = "AimbotSpeed",
+    Callback = function(Value)
+        -- Add Aimbot speed logic here
+    end
+})
+
+-- Create a slider for Aimbot FOV
+local AimbotFOVSlider = AimbotSection:CreateSlider({
+    Name = "Aimbot FOV",
+    Range = {1, 360},
+    Increment = 1,
+    CurrentValue = 180,
+    Flag = "AimbotFOV",
+    Callback = function(Value)
+        -- Add Aimbot FOV logic here
+    end
+})
+
+-- Create a toggle for Silent Aim
+local SilentAimToggle = AimbotSection:CreateToggle({
+    Name = "Silent Aim",
+    CurrentValue = false,
+    Flag = "SilentAim",
+    Callback = function(Value)
+        -- Add Silent Aim logic here
+    end
+})
+
+-- Create a toggle for Auto-Shoot
+local AutoShootToggle = AimbotSection:CreateToggle({
+    Name = "Auto-Shoot",
+    CurrentValue = false,
+    Flag = "AutoShoot",
+    Callback = function(Value)
+        -- Add Auto-Shoot logic here
+    end
+})
+
+-- Create a slider for Auto-Shoot delay
+local AutoShootDelaySlider = AimbotSection:CreateSlider({
+    Name = "Auto-Shoot Delay",
+    Range = {1, 10},
+    Increment = 1,
+    CurrentValue = 5,
+    Flag = "AutoShootDelay",
+    Callback = function(Value)
+        -- Add Auto-Shoot delay logic here
+    end
+})
+
+-- Create a section for Target Selection
+local TargetSelectionSection = AimbotTab:CreateSection("Target Selection")
+
+-- Create a dropdown for Target team
+local TargetTeamDropdown = TargetSelectionSection:CreateDropdown({
+    Name = "Target Team",
+    Options = {"Enemy", "Friendly", "Both"},
+    CurrentOption = "Enemy",
+    Flag = "TargetTeam",
+    Callback = function(Option)
+        -- Add Target team logic here
+    end
+})
+
+-- Create a dropdown for Target priority
+local TargetPriorityDropdown = TargetSelectionSection:CreateDropdown({
+    Name = "Target Priority",
+    Options = {"Closest", "Farthest", "Most Health"},
+    CurrentOption = "Closest",
+    Flag = "TargetPriority",
+    Callback = function(Option)
+        -- Add Target priority logic here
+    end
+})
+
+-- Create a toggle for Ignore NPCs
+local IgnoreNPCToggle = TargetSelectionSection:CreateToggle({
+    Name = "Ignore NPCs",
+    CurrentValue = true,
+    Flag = "IgnoreNPCs",
+    Callback = function(Value)
+        -- Add Ignore NPCs logic here
+    end
+})
+
+-- Create a new tab for Misc
+local MiscTab = Window:CreateTab("Misc")
+
+-- Create a section for Movement
+local MovementSection = MiscTab:CreateSection("Movement")
+
+-- Create a toggle for Speedhack
+local SpeedhackToggle = MovementSection:CreateToggle({
+    Name = "Speedhack",
+    CurrentValue = false,
+    Flag = "Speedhack",
+    Callback = function(Value)
+        -- Add Speedhack logic here
+    end
+})
+
+-- Create a slider for Speed multiplier
+local SpeedMultiplierSlider = MovementSection:CreateSlider({
+    Name = "Speed Multiplier",
+    Range = {1, 10},
+    Increment = 1,
+    CurrentValue = 5,
+    Flag = "SpeedMultiplier",
+    Callback = function(Value)
+        -- Add Speed multiplier logic here
+    end
+})
+
+-- Create a toggle for Jump Hack
+local JumpHackToggle = MovementSection:CreateToggle({
+    Name = "Jump Hack",
+    CurrentValue = false,
+    Flag = "JumpHack",
+    Callback = function(Value)
+        -- Add Jump Hack logic here
+    end
+})
+
+-- Create a slider for Jump height
+local JumpHeightSlider = MovementSection:CreateSlider({
+    Name = "Jump Height",
+    Range = {1, 10},
+    Increment = 1,
+    CurrentValue = 5,
+    Flag = "JumpHeight",
+    Callback = function(Value)
+        -- Add Jump height logic here
+    end
+})
+
+-- Create a toggle for NoClip
+local NoClipToggle = MovementSection:CreateToggle({
+    Name = "NoClip",
+    CurrentValue = false,
+    Flag = "NoClip",
+    Callback = function(Value)
+        -- Add NoClip logic here
+    end
+})
+
+-- Create a section for Radar
+local RadarSection = MiscTab:CreateSection("Radar")
+
+-- Create a toggle for Radar
+local RadarToggle = RadarSection:CreateToggle({
+    Name = "Enabled",
+    CurrentValue = false,
+    Flag = "RadarEnabled",
+    Callback = function(Value)
+        -- Add Radar logic here
+    end
+})
+
+-- Create a slider for Radar range
+local RadarRangeSlider = RadarSection:CreateSlider({
+    Name = "Radar Range",
+    Range = {1, 1000},
+    Increment = 10,
+    CurrentValue = 100,
+    Flag = "RadarRange",
+    Callback = function(Value)
+        -- Add Radar range logic here
+    end
+})
+
+-- Create a section for Anti-AFK
+local AntiAFKSection = MiscTab:CreateSection("Anti-AFK")
+
+-- Create a toggle for Anti-AFK
+local AntiAFKToggle = AntiAFKSection:CreateToggle({
+    Name = "Enabled",
+    CurrentValue = false,
+    Flag = "AntiAFKEnabled",
+    Callback = function(Value)
+        -- Add Anti-AFK logic here
+    end
+})
