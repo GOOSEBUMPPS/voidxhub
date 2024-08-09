@@ -1,0 +1,281 @@
+--[[
+ _    __      _     ___  __   
+| |  / /___  (_)___/ / |/ /   
+| | / / __ \/ / __  /|   /    
+| |/ / /_/ / / /_/ //   |      
+|___/\____/_/\__,_//_/|_|       
+]]--
+local Players = game:GetService("Players")
+local Plr = Players.LocalPlayer
+local Cash = Plr.DataFolder.Currency
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
+local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
+local Window = Rayfield:CreateWindow({
+   Name = "Voidx | AutoFarm V1.0",
+   LoadingTitle = "Loading UI...",
+   LoadingSubtitle = "Best Autofarm",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "Big Hub"
+   },
+   Discord = {
+      Enabled = true,
+      Invite = "karv", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      RememberJoins = false -- Set this to false to make them join the discord every time they load it up
+   },
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Voidx | Key",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided",
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"Testing"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+local Tab = Window:CreateTab("Autofarm", 4483362458) -- Title, Image
+local Section = Tab:CreateSection("@rvd1")
+local clicks = 0
+
+local clicks = 0
+
+local Button = Tab:CreateButton({
+   Name = "Enable autofarm",
+   Callback = function()
+       clicks = clicks + 1
+       if clicks == 1 then
+           -- Send a notification on the first click
+           Notification:Notify(
+               {Title = "Voidx", Description = "Warning! This script cannot be disabled once enabled, to enable please click the button one more time"},
+               {OutlineColor = Color3.fromRGB(80, 80, 80), Time = 5, Type = "image"},
+               {Image = "http://www.roblox.com/asset/?id=6023426923", ImageColor = Color3.fromRGB(255, 84, 84)}
+           )
+       elseif clicks == 2 then
+local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
+local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
+Notification:Notify(
+    {Title = "Voidx", Description = "Script made and fixed by rvd1"},
+    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 5, Type = "image"},
+    {Image = "http://www.roblox.com/asset/?id=6023426923", ImageColor = Color3.fromRGB(255, 84, 84)}
+)
+wait(1)
+Notification:Notify(
+    {Title = "Voidx", Description = "Loading autofarm..."},
+    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 5, Type = "image"},
+    {Image = "http://www.roblox.com/asset/?id=6023426923", ImageColor = Color3.fromRGB(255, 84, 84)}
+)
+wait(1)
+Notification:Notify(
+    {Title = "Voidx", Description = "Loaded! Thank you for using our script!"},
+    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 5, Type = "image"},
+    {Image = "http://www.roblox.com/asset/?id=6023426923", ImageColor = Color3.fromRGB(255, 84, 84)}
+)
+wait(0.5)
+local gm = getrawmetatable(game)
+setreadonly(gm, false)
+local namecall = gm.__namecall
+gm.__namecall =
+    newcclosure(
+    function(self, ...)
+        local args = {...}
+        if not checkcaller() and getnamecallmethod() == "FireServer" and tostring(self) == "MainEvent" then
+            if tostring(getcallingscript()) ~= "Framework" then
+                return
+            end
+        end
+        if not checkcaller() and getnamecallmethod() == "Kick" then
+            return
+        end
+        return namecall(self, unpack(args))
+    end
+)
+
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local TweenService = game:GetService("TweenService")
+
+function gettarget()
+    local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:wait()
+    local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+    local maxdistance = math.huge
+    local target
+    for i, v in pairs(game:GetService("Workspace").Cashiers:GetChildren()) do
+        if v:FindFirstChild("Head") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+            local distance = (HumanoidRootPart.Position - v.Head.Position).magnitude
+            if distance < maxdistance then
+                target = v
+                maxdistance = distance
+            end
+        end
+    end
+    return target
+end
+
+for i, v in pairs(workspace:GetDescendants()) do
+    if v:IsA("Seat") then
+        v:Destroy()
+    end
+end
+
+
+
+shared.MoneyFarm = true
+farming = true
+startTime = tick()
+local startTime = 0
+local farming = false
+while shared.MoneyFarm do
+    wait()
+    local targets = {}
+    for i, v in pairs(game:GetService("Workspace").Cashiers:GetChildren()) do
+        if v:FindFirstChild("Head") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+            table.insert(targets, v)
+        end
+    end
+    for i, target in pairs(targets) do
+        repeat
+            wait()
+            pcall(
+                function()
+                    local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:wait()
+                    local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+                    local Combat = LocalPlayer.Backpack:FindFirstChild("Combat") or Character:FindFirstChild("Combat")
+                    if not Combat then
+                        Character:FindFirstChild("Humanoid").Health = 0
+                        return
+                    end
+                    HumanoidRootPart.CFrame = target.Head.CFrame * CFrame.new(0, -2.5, 3)
+                    Combat.Parent = Character
+                    Combat:Activate()
+                end
+            )
+        until not target or target.Humanoid.Health < 0
+        for i, v in pairs(game:GetService('Workspace')['Ignored']['Drop']:GetChildren()) do
+            if v:IsA('Part') then
+                local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:wait()
+                local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+                local distance = (HumanoidRootPart.Position - v.Position).magnitude
+                if distance < 10 then -- check if the drop is close to the player
+                    local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.In) -- increased tween time to 0.5 seconds
+                    local tween = TweenService:Create(HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(v.Position + Vector3.new(0, 2, 0))}) -- teleport above the cash
+                    tween:Play()
+                    tween.Completed:Wait()
+                    wait(math.random(0.1, 0.5))
+                    while v.Parent do
+                        fireclickdetector(v:FindFirstChild('ClickDetector'))
+                        wait(0.05) -- wait for a short time to ensure the click is registered
+                        wait(math.random(0.05, 0.2)) -- add a random wait time to avoid detection
+                    end
+                end
+            end
+        end
+    end
+    wait(0.5)
+end
+           clicks = 0
+       end
+   end,
+})
+local Button = Tab:CreateButton({
+   Name = "Fixed autofarm (Less bugs but slower)",
+   Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/lerkermer/lua-projects/master/SwagAutofarm"))()
+   end,
+})
+-- Create a variable to store the webhook URL
+local webhookUrl = ""
+
+-- Create the input field
+local Input = Tab:CreateInput({
+   Name = "Webhook",
+   PlaceholderText = "Webhook link or leave blank",
+   RemoveTextAfterFocusLost = false,
+   Callback = function(Text)
+       -- The function that takes place when the input is changed
+       -- The variable (Text) is a string for the value in the text box
+       print("Webhook input changed to:", Text)
+       webhookUrl = Text -- Update the webhookUrl variable
+       -- You can add more code here to handle the input change
+   end,
+})
+
+-- Create the button
+local Button = Tab:CreateButton({
+   Name = "Test Webhook",
+   Callback = function()
+       -- The function that takes place when the button is pressed
+       if webhookUrl ~= "" then
+           print("Sending request to webhook:", webhookUrl)
+           -- You can add code here to send a request to the webhook URL
+           -- For example, using the HttpService:
+           local httpRequest = game:GetService("HttpService")
+           local requestBody = "{'content': 'This is a test message from the webhook button'}"
+           local headers = {
+               ["Content-Type"] = "application/json"
+           }
+           local response = httpRequest:PostAsync(webhookUrl, requestBody, headers)
+           print("Webhook response:", response.StatusCode, response.Body)
+       else
+           print("Please enter a webhook URL")
+       end
+   end,
+})
+local Input = Tab:CreateInput({
+   Name = "Time between sends",
+   PlaceholderText = "Input time in seconds",
+   RemoveTextAfterFocusLost = false,
+   Callback = function(Text)
+       -- The function that takes place when the input is changed
+       -- The variable (Text) is a string for the value in the text box
+       print("Time changed to:", Text)
+       -- You can add more code here to handle the input change
+   end,
+})
+
+local Tab = Window:CreateTab("Stats", 4483362458) -- Title, Image
+local Section = Tab:CreateSection("Stats")
+local function addCommas(n)
+    if n < 1000 then
+        return tostring(n)
+    else
+        return tostring(n):reverse():gsub("%d%d%d", "%1,"):reverse()
+    end
+end
+local CashValue = Cash.Value -- Replace with your Cash.Value
+local formattedCash = "$" .. addCommas(CashValue)
+local label = Tab:CreateLabel("Starting with: " .. formattedCash)
+local labelupd = Tab:CreateLabel("Current amount: ".. formattedCash)
+local labelgain = Tab:CreateLabel("Amount gained: $0")
+local labeltime = Tab:CreateLabel("Time farming: ")
+local Tab = Window:CreateTab("Credits", 4483362458) -- Title, Image
+local Section = Tab:CreateSection("Credits")
+local Label = Tab:CreateLabel("Script made by @rvd1")
+local Button = Tab:CreateButton({
+   Name = "Karv scripts discord",
+   Callback = function()
+   setclipboard("https://discord.gg/karv")
+   end,
+})
+local Label = Tab:CreateLabel("More updates coming soon")
+local Label = Tab:CreateLabel("Working as of [8/9/2024]")
+local startingAmount = Plr.DataFolder.Currency.Value
+while true do
+   wait(0.3)
+   local Cash = Plr.DataFolder.Currency
+   local currentAmount = Cash.Value
+   local formattedCash = "$" .. addCommas(currentAmount)
+   labelupd:Set("Current amount: " .. formattedCash)
+   local difference = currentAmount - startingAmount
+   local formattedDifference = "$" .. addCommas(difference)
+   labelgain:Set("Amount gained: " .. formattedDifference)
+
+   if farming then
+       local timeFarming = math.floor(tick() - startTime)
+       local hours = math.floor(timeFarming / 3600)
+       local minutes = math.floor((timeFarming % 3600) / 60)
+       local seconds = timeFarming % 60
+       labeltime:Set("Time farming: " .. string.format("%02d:%02d:%02d", hours, minutes, seconds))
+   end
+end
